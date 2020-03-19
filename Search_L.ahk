@@ -10,8 +10,8 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 vk1Dsc07B & h::
 {
-	Message=
-			(
+   Message=
+         (
 
 [無変換]+F1
 このスクリプト自体をvscodeで開く
@@ -48,36 +48,43 @@ Wordの文字カウント
 
 [無変換]+p
 pcdコマンド※peco
-			)
+         )
 
-	Msgbox, 0, 使い方, % Message,
-	Return
+   Msgbox, 0, 使い方, % Message,
+   Return
 }
 
 vk1Dsc07B & F1::
 {
-	Run, "C:\Program Files\Microsoft VS Code\Code.exe" "D:\tool\AutoHotKey\Search_L\Search_L.ahk"
-	Return
+    Run, "C:\Program Files\Microsoft VS Code\Code.exe" "D:\tool\AutoHotKey\Search_L\Search_L.ahk"
+    Return
 }
 
 vk1Dsc07B & r::
 {
-	Reload
-	Return
+    Reload
+    Return
 }
 
 ; Google search
 vk1Dsc07B & 1::
 {
-	backup = %Clipboard%   													;クリップボードの内容を保存
-	Clipboard = 															;クリップボードを空にする
-    Send, ^c 																;選択している文字列がクリップボードにコピーされる
+    ;クリップボードの内容を保存
+    backup = %Clipboard%
+    ;クリップボードを空にする
+    Clipboard =
+    ;選択している文字列がクリップボードにコピーされる
+    Send, ^c
     ClipWait,1
-    Clipboard_keyword = %Clipboard% 										;クリップボードの内容を変数に入れる
-    Clipboard = %backup% 													;保存した内容をクリップボードに戻す
+    ;クリップボードの内容を変数に入れる
+    Clipboard_keyword = %Clipboard%
+    ;保存した内容をクリップボードに戻す
+    Clipboard = %backup%
 
-    Clipboard_keyword := RegExReplace( Clipboard_keyword, "&", "`%26" ) 	;アンパサンドのパーセントエンコーディング対応
-    Clipboard_keyword := RegExReplace( Clipboard_keyword, """", "`%22" ) 	;ダブルクォーテーションは2つ並べてエスケープ
+    ;アンパサンドのパーセントエンコーディング対応
+    Clipboard_keyword := RegExReplace( Clipboard_keyword, "&", "`%26" )
+    ;ダブルクォーテーションは2つ並べてエスケープ
+    Clipboard_keyword := RegExReplace( Clipboard_keyword, """", "`%22" )
 
     Run, "http://www.google.co.jp/search?hl=ja&lr=lang_ja&ie=UTF-8&q=%Clipboard_keyword%"
     Return
@@ -86,8 +93,8 @@ vk1Dsc07B & 1::
 ; アルク search
 vk1Dsc07B & 2::
 {
-	backup = %Clipboard%
-	Clipboard =
+   backup = %Clipboard%
+   Clipboard =
     Send, ^c
     ClipWait,1
     Clipboard_keyword = %Clipboard%
@@ -103,8 +110,8 @@ vk1Dsc07B & 2::
 ; 連想類語辞典 search
 vk1Dsc07B & 3::
 {
-	backup = %Clipboard%
-	Clipboard =
+    backup = %Clipboard%
+    Clipboard =
     Send, ^c
     ClipWait,1
     Clipboard_keyword = %Clipboard%
@@ -120,8 +127,8 @@ vk1Dsc07B & 3::
 ; Google翻訳（英->日）
 vk1Dsc07B & 4::
 {
-	backup = %Clipboard%
-	Clipboard =
+    backup = %Clipboard%
+    Clipboard =
     Send, ^c
     ClipWait,1
     Clipboard_keyword = %Clipboard%
@@ -137,8 +144,8 @@ vk1Dsc07B & 4::
 ; YOMIKATA
 vk1Dsc07B & 5::
 {
-	backup = %Clipboard%
-	Clipboard =
+    backup = %Clipboard%
+    Clipboard =
     Send, ^c
     ClipWait,1
     Clipboard_keyword = %Clipboard%
@@ -154,35 +161,35 @@ vk1Dsc07B & 5::
 ; pcdコマンド※peco
 vk1Dsc07B & p::
 {
-	SetWorkingDir, C:\Users\kenta-goto
-	Run, "pcd"
-	Sleep, 100
-	Return
+   SetWorkingDir, C:\Users\kenta-goto
+   Run, "pcd"
+   Sleep, 100
+   Return
 }
 
 ; EmEditor
 vk1Dsc07B & e::
 {
-	Run, "C:\Users\kenta-goto\AppData\Local\Programs\EmEditor\EmEditor.exe"
-	Sleep, 500
-	Send, ^n
-	Return
+   Run, "C:\Users\kenta-goto\AppData\Local\Programs\EmEditor\EmEditor.exe"
+   Sleep, 500
+   Send, ^n
+   Return
 }
 
 ; GVim
 vk1Dsc07B & v::
 {
-	SetWorkingDir, C:\vim82-kaoriya-win64
-	Run, "C:\vim82-kaoriya-win64\gvim.exe"
-	Sleep, 500
-	Return
+   SetWorkingDir, C:\vim82-kaoriya-win64
+   Run, "C:\vim82-kaoriya-win64\gvim.exe"
+   Sleep, 500
+   Return
 }
 
 ; Everything
 vk1Dsc07B & f::
 {
-	backup = %Clipboard%
-	Clipboard =
+   backup = %Clipboard%
+   Clipboard =
     Send, ^c
     ClipWait,1
     Clipboard_keyword = %Clipboard%
@@ -197,30 +204,30 @@ vk1Dsc07B & f::
 ; Wordの文字カウント
 vk1Dsc07B & w::
 {
-	; クリップボード処理
-	backup = %Clipboard% ; クリップボードの中身をバックアップ
+   ; クリップボード処理
+   backup = %Clipboard% ; クリップボードの中身をバックアップ
     Send, ^c
     ClipWait,1
     Clipboard_keyword = %Clipboard%
 
-	Clipboard = %Clipboard_keyword%
+   Clipboard = %Clipboard_keyword%
 
-	Run, "C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE"
-	sleep 3000
-	Send, ^n
-	WinWait, 文書 1 [互換モード] - Word, , 3
-	If ErrorLevel = 0
-	{
-		MsgBox, WinWait timed out.
-		Return
-	}
-	Else
-		sleep 100
-		Send, ^v
-		sleep 100
-		Send, !rw
+   Run, "C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE"
+   sleep 3000
+   Send, ^n
+   WinWait, 文書 1 [互換モード] - Word, , 3
+   If ErrorLevel = 0
+   {
+      MsgBox, WinWait timed out.
+      Return
+   }
+   Else
+      sleep 100
+      Send, ^v
+      sleep 100
+      Send, !rw
 
-	; バックアップしたクリップボードの中身を戻す
+   ; バックアップしたクリップボードの中身を戻す
     Clipboard = %backup%
     Return
 }
