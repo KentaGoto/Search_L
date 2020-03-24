@@ -1,7 +1,8 @@
 # Search_L 
 
 ## Description  
-自分用。exe に固めたらすべての Windows マシンの起動項目に突っ込む。
+自分用。  
+exe に固めたらすべての Windows マシンの起動項目に突っ込む。
 
 ## Usage  
 **[無変換]+h** で使用方法を確認。  
