@@ -1,7 +1,6 @@
 # Search_L 
 
 ## Description  
-自分用。  
 起動するとタスクトレイに常駐する。  
 ※推奨は exe に固めて Windows マシンの起動項目に突っ込む。  
 
