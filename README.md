@@ -24,3 +24,6 @@
 
 ## License
 MIT
+
+## Author  
+Kenta Goto
