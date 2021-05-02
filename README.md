@@ -20,6 +20,7 @@
 **[無変換]+v** で GVim 起動  
 
 ## Requirements  
+- Windows  
 - AHK (1.1.33.08 or above)
 
 ## License
