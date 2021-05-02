@@ -14,11 +14,13 @@
 テキストを選択し、**[無変換]+4** で Google 翻訳（E2J）  
 
 3:  
-**[無変換]+p** で peco（pcd）  
+**[無変換]+p** で peco（pcd改）  
 
 4:  
 **[無変換]+v** で GVim 起動  
 
+##Requirements  
+- AHK (1.1.33.08 or above)
 
 ## License
 MIT
