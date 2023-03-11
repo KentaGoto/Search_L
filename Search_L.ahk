@@ -16,8 +16,6 @@ vk1D & h::
 
 テキストを選択し、[無変換]+1 で Google 検索
 
-テキストを選択し、[無変換]+4 で Google 翻訳（E2J）
-
 [無変換]+p で peco（pcd）
 
 [無変換]+v で GVim 起動
@@ -60,23 +58,6 @@ vk1D & 1::
     Clipboard_keyword := RegExReplace( Clipboard_keyword, """", "`%22" )
 
     Run, "http://www.google.co.jp/search?hl=ja&lr=lang_ja&ie=UTF-8&q=%Clipboard_keyword%"
-    Return
-}
-
-; Google翻訳（英->日）
-vk1D & 4::
-{
-    backup = %Clipboard%
-    Clipboard =
-    Send, ^c
-    ClipWait,1
-    Clipboard_keyword = %Clipboard%
-    Clipboard = %backup%
-
-    Clipboard_keyword := RegExReplace( Clipboard_keyword, "&", "`%26" )
-    Clipboard_keyword := RegExReplace( Clipboard_keyword, """", "`%22" )
-
-    Run, "https://translate.google.co.jp/#en/ja/%Clipboard_keyword%"
     Return
 }
 
